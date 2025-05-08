@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="modelo">
+
+    <class name="modelo.Persona" table="persona" abstract="true">
+        <id name="id_persona" column="id_persona">
+            <generator class="native"/>
+        </id>
+        <property name="nombre" column="nombre" not-null="true"/>
+        <property name="apellido" column="apellido" not-null="true"/>
+        <property name="dni" column="dni" not-null="true" unique="true"/>
+
+        <joined-subclass name="modelo.Cliente" table="cliente">
+            <key column="id_persona"/>
+            <property name="concurrente" column="concurrente" not-null="true"/>
+            <one-to-one name="contacto" class="modelo.Contacto" 
+                       cascade="all" 
+                       property-ref="cliente"/>
+        </joined-subclass>
+      
+        <joined-subclass name="modelo.Profesional" table="profesional">
+            <key column="id_persona"/>
+            <property name="matricula"/>
+            <set name="especialidades" table="profesional_especialidad">
+                <key column="id_profesional"/>
+                <many-to-many class="modelo.Especialidad" column="id_especialidad"/>
+            </set>
+        </joined-subclass>
+        
+    </class>
+
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+        

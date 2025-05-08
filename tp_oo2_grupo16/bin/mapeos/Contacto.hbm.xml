@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="modelo.Contacto" table="contacto">
+        <id name="id_contacto" column="id_contacto">
+            <generator class="identity"/>
+        </id>
+        
+        <many-to-one name="cliente" class="modelo.Cliente" column="id_cliente" unique="true" not-null="true" cascade="none" foreign-key="fk_contacto_cliente"/>
+        
+        <property name="telefono" column="telefono"/>
+        <property name="email" column="email"/>
+    </class>
+</hibernate-mapping>

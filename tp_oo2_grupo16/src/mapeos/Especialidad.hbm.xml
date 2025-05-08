@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="modelo">
+    
+    <class name="modelo.Especialidad" table="especialidad">
+        <id name="id_especialidad" column="id_especialidad">
+            <generator class="native"/>
+        </id>
+        <property name="nombre" column="nombre" not-null="true"/>
+        <property name="descripcion" column="descripcion"/>
+        
+        <set name="profesionales" table="profesional_especialidad" inverse="true">
+            <key column="id_especialidad"/>
+            <many-to-many class="modelo.Profesional" column="id_profesional"/>
+        </set>
+    </class>
+    
+</hibernate-mapping>

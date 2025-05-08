@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="modelo">
+
+    <class name="modelo.Turno" table="turno">
+        <id name="id_turno" column="id_turno">
+            <generator class="native"/>
+        </id>
+        
+        <!-- Relación con Profesional -->
+        <many-to-one name="profesional" class="modelo.Profesional" column="id_profesional"
+                     not-null="true" cascade="none" fetch="join"/>
+        
+        <!-- Relación con Cliente -->
+        <many-to-one name="cliente" class="modelo.Cliente" column="id_cliente"
+                     not-null="true" cascade="none" fetch="join"/>
+        
+        <!-- Relación con Servicio -->
+        <many-to-one name="servicio" class="modelo.Servicio" column="id_servicio"
+                     not-null="true" cascade="none" fetch="join"/>
+        
+        <property name="fecha_hora" column="fecha_hora" not-null="true" type="timestamp"/>
+        <property name="observaciones" column="observaciones" type="text"/>
+        <property name="estado" column="estado" length="20"/>
+    </class>
+
+</hibernate-mapping>

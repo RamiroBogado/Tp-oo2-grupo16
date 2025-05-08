@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de la base de datos -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tp_oo2_grupo16_v2?serverTimezone=GMT-3</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        
+        <!-- Configuración de Hibernate -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.enable_lazy_load_no_trans">false</property>
+        
+        <!-- Archivos de mapeo -->
+        <mapping resource="mapeos/Contacto.hbm.xml"/>
+        <mapping resource="mapeos/Especialidad.hbm.xml"/>
+        <mapping resource="mapeos/Persona.hbm.xml"/>
+        <mapping resource="mapeos/Servicio.hbm.xml"/>
+        <mapping resource="mapeos/Turno.hbm.xml"/>
+              
+    </session-factory>
+</hibernate-configuration>

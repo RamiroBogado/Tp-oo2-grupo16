@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="modelo">
+
+    <class name="modelo.Servicio" table="servicio">
+        <id name="id_servicio" column="id_servicio">
+            <generator class="native"/>
+        </id>
+        
+        <property name="nombre" column="nombre" not-null="true" length="100"/>
+        <property name="descripcion" column="descripcion" length="255"/>
+        
+        <!-- Relación inversa con Turno (opcional) -->
+        <set name="turnos" inverse="true" cascade="none">
+            <key column="id_servicio"/>
+            <one-to-many class="modelo.Turno"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
